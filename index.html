@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T&Z Golden Building Construction LLC | Ultra Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ffffff; }
+        h1, h2, h3, .font-playfair { font-family: 'Playfair Display', serif; }
+        .text-gold { color: #d4af37; }
+        .bg-gold { background-color: #d4af37; }
+        .border-gold { border-color: #d4af37; }
+        
+        /* Custom Animations */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        @keyframes float-reverse {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 30px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        .animate-float { animation: float 7s ease-in-out infinite; }
+        .animate-float-delayed { animation: float-reverse 8s ease-in-out infinite; }
+        .glow-button { animation: pulse-glow 3s infinite; }
+        
+        /* Glassmorphism */
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-dark { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-[#d4af37] selection:text-black">
+
+    <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-[#d4af37] rounded-full mix-blend-multiply filter blur-[150px] opacity-20 pointer-events-none z-0 animate-float"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-96 h-96 bg-[#d4af37] rounded-full mix-blend-multiply filter blur-[150px] opacity-10 pointer-events-none z-0 animate-float-delayed"></div>
+
+    <nav class="glass-dark fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-24 items-center">
+                <a href="#home" class="flex-shrink-0 cursor-pointer relative z-10">
+                    <span class="text-3xl font-playfair font-bold text-white tracking-wide">T&Z <span class="text-gold">Golden</span></span>
+                    <span class="text-[9px] block text-gray-400 tracking-[0.3em] uppercase mt-1">Building Construction</span>
+                </a>
+                <div class="hidden md:flex space-x-10 font-medium tracking-widest items-center text-xs uppercase relative z-10">
+                    <a href="#projects" class="text-gray-300 hover:text-[#d4af37] transition duration-300">Portfolio</a>
+                    <a href="#expertise" class="text-gray-300 hover:text-[#d4af37] transition duration-300">Expertise</a>
+                    <a href="vision.html" class="text-gray-300 hover:text-[#d4af37] transition duration-300">The Standard</a>
+                    <a href="#contact" class="border border-[#d4af37] text-[#d4af37] px-8 py-3 hover:bg-[#d4af37] hover:text-black transition duration-500 glow-button">Consultation</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80" alt="Dubai Luxury" class="w-full h-full object-cover opacity-30 scale-105 transform origin-center">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505]"></div>
+        </div>
+        
+        <img src="https://images.unsplash.com/photo-1541881451970-13e6d1163462?auto=format&fit=crop&w=400&q=80" class="absolute top-1/4 left-10 w-64 h-96 object-cover opacity-20 animate-float hidden lg:block rounded-sm filter grayscale" alt="Architecture">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=400&q=80" class="absolute bottom-1/4 right-10 w-72 h-80 object-cover opacity-20 animate-float-delayed hidden lg:block rounded-sm filter grayscale" alt="Structure">
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <h2 class="text-gold tracking-[0.4em] uppercase mb-8 text-xs font-semibold">Adding Value to Your Property</h2>
+            <h1 class="text-6xl md:text-8xl font-playfair font-bold text-white leading-tight mb-10">Uncompromising <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5ab]">Excellence.</span></h1>
+            <p class="text-xl text-gray-400 mb-14 font-light max-w-2xl mx-auto tracking-wide">Delivering over 50+ state projects with absolute precision. Bringing Moscow's rigorous engineering standards to the UAE.</p>
+            <a href="#projects" class="bg-gold text-black px-12 py-5 text-sm uppercase tracking-[0.2em] font-bold hover:bg-white transition duration-500 shadow-[0_0_30px_rgba(212,175,55,0.3)]">Explore Our Work</a>
+        </div>
+    </section>
+
+    <section id="projects" class="py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-6xl font-playfair font-bold text-white mb-6">Execution & Results</h2>
+                <div class="w-20 h-1 bg-gold mx-auto"></div>
+            </div>
+
+            <div class="relative w-full max-w-5xl mx-auto mb-32 aspect-video bg-[#0a0a0a] shadow-2xl overflow-hidden rounded-sm border border-gray-800 group hover:border-[#d4af37] transition duration-700 transform hover:scale-[1.02]">
+                <video controls class="w-full h-full object-cover" poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80">
+                    <source src="assets/master-edit.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none bg-black/40 group-hover:bg-transparent transition duration-500">
+                    <i class="fa-solid fa-play text-6xl text-white/70 group-hover:opacity-0 transition duration-300 drop-shadow-2xl"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="overflow-hidden h-[500px] rounded-sm animate-float">
+                    <img src="assets/result1.jpg" alt="Project Reveal" class="w-full h-full object-cover filter brightness-75 hover:brightness-110 hover:scale-110 transition duration-1000 ease-out cursor-pointer">
+                </div>
+                <div class="overflow-hidden h-[500px] rounded-sm animate-float-delayed mt-12 md:mt-24">
+                    <img src="assets/result2.jpg" alt="Project Reveal" class="w-full h-full object-cover filter brightness-75 hover:brightness-110 hover:scale-110 transition duration-1000 ease-out cursor-pointer">
+                </div>
+                <div class="overflow-hidden h-[500px] rounded-sm animate-float mt-6 md:mt-12">
+                    <img src="assets/result3.jpg" alt="Project Reveal" class="w-full h-full object-cover filter brightness-75 hover:brightness-110 hover:scale-110 transition duration-1000 ease-out cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="py-32 relative z-10 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-[#d4af37]/10 rounded-full animate-[spin_60s_linear_infinite] pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-[#d4af37]/5 rounded-full animate-[spin_90s_linear_infinite_reverse] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="mb-24 md:flex justify-between items-end">
+                <div class="max-w-2xl">
+                    <h2 class="text-5xl md:text-7xl font-playfair font-bold text-white mb-6">Master Craftsmanship <br>& Engineering.</h2>
+                    <p class="text-xl text-gray-400 font-light">End-to-end solutions engineered for perfection.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass p-12 hover:-translate-y-4 transition duration-500 group border-t-2 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-house text-4xl text-gray-600 group-hover:text-gold transition duration-500 mb-8"></i>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Villa Construction</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Premium structural execution from foundation to roof, guaranteeing strict on-time delivery.</p>
+                </div>
+                <div class="glass p-12 hover:-translate-y-4 transition duration-500 group border-t-2 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-paint-roller text-4xl text-gray-600 group-hover:text-gold transition duration-500 mb-8"></i>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Renovation & Fit-Out</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Complete interior and exterior transformations featuring immaculate, high-end finishing.</p>
+                </div>
+                <div class="glass p-12 hover:-translate-y-4 transition duration-500 group border-t-2 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-fan text-4xl text-gray-600 group-hover:text-gold transition duration-500 mb-8"></i>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">HVAC & Technical</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Advanced design and installation of high-efficiency climate systems tailored for the UAE.</p>
+                </div>
+                <div class="glass p-12 hover:-translate-y-4 transition duration-500 group border-t-2 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-couch text-4xl text-gray-600 group-hover:text-gold transition duration-500 mb-8"></i>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Furniture & Joinery</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Bespoke fitted interior elements crafted to perfectly match your aesthetic vision.</p>
+                </div>
+                <div class="glass p-12 hover:-translate-y-4 transition duration-500 group border-t-2 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-microchip text-4xl text-gray-600 group-hover:text-gold transition duration-500 mb-8"></i>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Smart Home Systems</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Seamless integration of modern lighting, climate, security, and automation technology.</p>
+                </div>
+                <div class="glass p-12 hover:-translate-y-4 transition duration-500 group border-t-2 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-temperature-arrow-up text-4xl text-gray-600 group-hover:text-gold transition duration-500 mb-8"></i>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Underfloor Heating</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Invisible, modern heating solutions providing unparalleled comfort and energy efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-[#020202] pt-32 pb-12 relative z-10 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-20 border-b border-gray-900 pb-20 items-center">
+            <div>
+                <h2 class="text-5xl md:text-7xl font-playfair font-bold mb-8">Initiate <br><span class="text-gold">Your Project.</span></h2>
+                <p class="text-gray-500 mb-12 text-lg font-light max-w-md">Available for private discussions, site visits, and tailored commercial proposals in Dubai.</p>
+                <div class="space-y-6">
+                    <p class="flex items-center text-xl font-light text-gray-300 hover:text-white transition"><i class="fa-solid fa-envelope text-gold mr-6 w-6"></i> info@tzconstruction.com</p>
+                    <p class="flex items-center text-xl font-light text-gray-300 hover:text-white transition"><i class="fa-solid fa-phone text-gold mr-6 w-6"></i> +971 58 5350242</p>
+                </div>
+            </div>
+            
+            <div class="glass p-10 md:p-14">
+                <form class="space-y-8">
+                    <div class="border-b border-gray-700 pb-2">
+                        <input type="text" placeholder="Full Name" class="w-full bg-transparent text-white focus:outline-none placeholder-gray-600 font-light" required>
+                    </div>
+                    <div class="border-b border-gray-700 pb-2">
+                        <input type="email" placeholder="Email Address" class="w-full bg-transparent text-white focus:outline-none placeholder-gray-600 font-light" required>
+                    </div>
+                    <div class="border-b border-gray-700 pb-2">
+                        <textarea placeholder="Project Details" rows="3" class="w-full bg-transparent text-white focus:outline-none placeholder-gray-600 font-light resize-none" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-white text-black font-bold uppercase tracking-[0.2em] py-5 hover:bg-gold transition duration-500 mt-4 text-sm">Request Consultation</button>
+                </form>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 pt-12 text-center text-gray-700 text-sm font-light uppercase tracking-widest">
+            <p>&copy; 2026 T&Z Golden Building Construction LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
