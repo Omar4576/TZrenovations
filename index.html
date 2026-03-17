@@ -1,225 +1,1808 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T&Z Golden | Premium Construction</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>T&Z Golden Building Construction LLC | Premium Dubai Developers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Outfit:wght@300;400;500;600&display=swap');
-        
-        /* * COLOR PALETTE:
-         * Background: #faf9f6 (Warm Sand/Off-White)
-         * Text: #2d3748 (Soft Charcoal)
-         * Accent: #d4af37 (Classic Gold)
-         */
-        body { font-family: 'Outfit', sans-serif; background-color: #faf9f6; color: #2d3748; }
-        h1, h2, h3, .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        .text-gold { color: #d4af37; }
-        .bg-gold { background-color: #d4af37; }
-        .border-gold { border-color: #d4af37; }
+        /* ================= VARIABLES ================= */
+        :root {
+            --bg-dark: #0C0C0C;
+            --bg-card: #141414;
+            --gold-primary: #C9A84C;
+            --gold-light: #E8D08A;
+            --text-cream: #F2EDE4;
+            --text-muted: #8A7F6E;
+            
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            
+            --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: 0.3s ease;
+        }
 
-        /* Smooth, elegant floating animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+        /* ================= RESET & GLOBAL ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important; /* Custom cursor */
         }
-        @keyframes float-delayed {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-cream);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .display-text {
+            font-family: var(--font-display);
+            font-weight: 600;
+        }
+
+        em, .italic-gold {
+            font-style: italic;
+            color: var(--gold-light);
+            font-family: var(--font-display);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .container {
+            max-w-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ================= CUSTOM CURSOR ================= */
+        .cursor-dot, .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold-primary);
+            transition: width 0.2s, height 0.2s;
+        }
+        .cursor-ring {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(201, 168, 76, 0.5);
+            transition: width 0.3s, height 0.3s, transform 0.1s;
+        }
+        .cursor-hover .cursor-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold-light);
+        }
+        .cursor-hover .cursor-ring {
+            width: 60px;
+            height: 60px;
+            border-color: var(--gold-light);
+            background-color: rgba(201, 168, 76, 0.1);
+        }
+
+        /* ================= BUTTONS ================= */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn-gold {
+            background-color: var(--gold-primary);
+            color: var(--bg-dark);
+            border: 1px solid var(--gold-primary);
+        }
+        .btn-gold:hover {
+            background-color: var(--gold-light);
+            border-color: var(--gold-light);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+        }
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+        }
+        .btn-ghost:hover {
+            background-color: var(--gold-primary);
+            color: var(--bg-dark);
+        }
+
+        /* ================= SCROLL ANIMATIONS ================= */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* ================= 1. STICKY NAV ================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition-fast);
+        }
+        header.scrolled {
+            background-color: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 15px 5%;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--text-cream);
+            letter-spacing: 2px;
+        }
+        .logo span {
+            color: var(--gold-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--gold-primary);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+        }
+
+        /* ================= 2. HERO SECTION ================= */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, rgba(201, 168, 76, 0.05) 0%, var(--bg-dark) 70%);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        .hero-text h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
         }
         
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: float-delayed 8s ease-in-out infinite; animation-delay: 2s; }
+        /* Hero 3D Collage */
+        .hero-visuals {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .collage-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+            width: 500px;
+            height: 500px;
+            transform-style: preserve-3d;
+            transform: rotateY(-18deg) rotateX(5deg);
+            animation: levitate 6s ease-in-out infinite alternate;
+            transition: transform 0.1s linear;
+        }
+        .collage-item {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: -20px 20px 30px rgba(0,0,0,0.8);
+        }
+        .collage-item:nth-child(1) { transform: translateZ(40px); }
+        .collage-item:nth-child(2) { transform: translateZ(-20px); }
+        .collage-item:nth-child(3) { transform: translateZ(10px); }
+        .collage-item:nth-child(4) { 
+            transform: translateZ(60px); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-card), #1a1a1a);
+            border-color: var(--gold-primary);
+        }
+        .brand-card h3 {
+            font-size: 2rem;
+            color: var(--gold-primary);
+            margin-bottom: 5px;
+        }
+        .brand-card p {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
         
-        /* Soft shadow for depth without harshness */
-        .soft-shadow { box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        /* Background Effects */
+        .vertical-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .v-line {
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.1), transparent);
+            animation: fadeLine 4s infinite alternate;
+        }
+        #particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background-color: var(--gold-primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+
+        /* Moving 3D Objects */
+        .scene-3d {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            perspective: 800px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .wireframe-cube {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            animation: rotateCube 20s infinite linear;
+        }
+        .wireframe-cube.c1 { top: 20%; left: 10%; width: 150px; height: 150px; }
+        .wireframe-cube.c2 { bottom: 20%; right: 5%; width: 80px; height: 80px; animation-duration: 15s; animation-direction: reverse;}
+        .face {
+            position: absolute;
+            width: 100%; height: 100%;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+        }
+        .face.front  { transform: translateZ(50%); }
+        .face.back   { transform: rotateY(180deg) translateZ(50%); }
+        .face.right  { transform: rotateY(90deg) translateZ(50%); }
+        .face.left   { transform: rotateY(-90deg) translateZ(50%); }
+        .face.top    { transform: rotateX(90deg) translateZ(50%); }
+        .face.bottom { transform: rotateX(-90deg) translateZ(50%); }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 5%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-primary);
+            z-index: 10;
+        }
+        .mouse {
+            width: 20px;
+            height: 30px;
+            border: 1px solid var(--gold-primary);
+            border-radius: 10px;
+            position: relative;
+        }
+        .wheel {
+            width: 2px;
+            height: 6px;
+            background-color: var(--gold-light);
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            animation: scrollWheel 1.5s infinite;
+        }
+
+        /* ================= 3. STATS BAR ================= */
+        #stats {
+            background-color: var(--bg-card);
+            border-top: 1px solid rgba(201, 168, 76, 0.3);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 60px 5%;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .stat-item {
+            position: relative;
+        }
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.3), transparent);
+        }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--gold-primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        /* ================= 4. ABOUT SECTION ================= */
+        #about .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .about-image-wrapper {
+            position: relative;
+            padding-bottom: 20px;
+            padding-right: 20px;
+        }
+        .about-image-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            /* ADD IMAGE HERE: background-image: url('YOUR_IMAGE.jpg'); background-size: cover; */
+        }
+        .badge-card {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--gold-primary);
+            padding: 20px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: bobbing 4s ease-in-out infinite alternate;
+        }
+        .badge-card h4 {
+            font-size: 2.5rem;
+            color: var(--gold-light);
+            margin-bottom: 5px;
+        }
+        .badge-card p {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .section-label {
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .about-text > p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .kpi-box {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-left: 2px solid var(--gold-primary);
+        }
+        .kpi-box h5 {
+            font-size: 1.2rem;
+            color: var(--text-cream);
+            margin-bottom: 5px;
+        }
+        .kpi-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ================= 5. SERVICES SECTION ================= */
+        #services {
+            background-color: var(--bg-card);
+        }
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .services-header h2 {
+            font-size: 3rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background-color: var(--bg-dark);
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-fast);
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--gold-primary);
+            transition: width 0.4s ease;
+        }
+        .service-card:hover::after {
+            width: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-num {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: rgba(255,255,255,0.03);
+            font-weight: 700;
+            transition: color 0.4s ease;
+        }
+        .service-card:hover .service-num {
+            color: rgba(201, 168, 76, 0.1);
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border: 1px solid var(--gold-primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 25px;
+            transition: var(--transition-fast);
+        }
+        .service-card:hover .service-icon {
+            background-color: var(--gold-primary);
+            color: var(--bg-dark);
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: var(--font-display);
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ================= 6. WHY T&Z SECTION ================= */
+        #why {
+            background-color: var(--bg-dark);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .why-list {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 15px;
+            background-color: rgba(20,20,20,0.5);
+            border-radius: 4px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .why-item:hover {
+            transform: translateX(10px);
+            background-color: var(--bg-card);
+        }
+        .why-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold-primary);
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+            transition: box-shadow 0.3s ease;
+        }
+        .why-item:hover .why-dot {
+            animation: pulseGlow 1.5s infinite;
+        }
+        .why-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--gold-light);
+        }
+        .why-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        /* Photo Stack */
+        .photo-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 0.8fr;
+            gap: 15px;
+            height: 600px;
+        }
+        .stack-img {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            /* ADD IMAGES HERE via inline styles or classes */
+        }
+        .stack-img.top {
+            grid-column: 1 / 3;
+        }
+
+        /* ================= 7. PROJECTS GALLERY ================= */
+        #projects {
+            background-color: var(--bg-card);
+        }
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .filter-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        .filter-btn.active {
+            color: var(--gold-primary);
+        }
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--gold-primary);
+            transition: width 0.3s ease;
+        }
+        .filter-btn.active::after, .filter-btn:hover::after {
+            width: 100%;
+        }
+
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .project-card {
+            position: relative;
+            height: 350px;
+            background-color: var(--bg-dark);
+            overflow: hidden;
+            /* ADD IMAGE HERE */
+        }
+        .project-card.wide {
+            grid-column: span 2;
+        }
+        .project-img {
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            transition: transform 0.6s ease;
+        }
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(12,12,12,0.9), rgba(12,12,12,0.2));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .project-overlay h4 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--gold-light);
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        .project-overlay p {
+            font-size: 0.85rem;
+            color: var(--text-cream);
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+        .project-card:hover .project-overlay h4,
+        .project-card:hover .project-overlay p {
+            transform: translateY(0);
+        }
+        .project-card.hide {
+            display: none;
+        }
+
+        /* ================= 8. VIDEOS SECTION ================= */
+        #media {
+            background-color: var(--bg-dark);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .video-card {
+            position: relative;
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            overflow: hidden;
+        }
+        .video-wrapper {
+            position: relative;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border-color: rgba(201, 168, 76, 0.5);
+        }
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(201, 168, 76, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--bg-dark);
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        .play-btn::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--gold-primary);
+            border-radius: 50%;
+            animation: pulseRing 2s infinite;
+        }
+        .video-card:hover .play-btn {
+            transform: scale(1.1);
+        }
+        .video-label {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            background-color: var(--gold-primary);
+            color: var(--bg-dark);
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: bottom 0.4s ease;
+            z-index: 3;
+        }
+        .video-card:hover .video-label {
+            bottom: 0;
+        }
+        .actual-video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            display: none;
+            z-index: 5;
+        }
+
+        /* ================= 9. GOVERNMENT RECOGNITION ================= */
+        #awards {
+            background-color: #12100b; /* Very dark gold tint */
+            background-image: radial-gradient(circle at 75% 50%, rgba(201, 168, 76, 0.15) 0%, transparent 50%);
+        }
+        .awards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .award-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .award-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .certificate-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-top: 5px solid var(--gold-primary);
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            animation: levitateCard 5s ease-in-out infinite alternate;
+            position: relative;
+        }
+        .cert-medal {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-primary), #8a6d2b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+            font-size: 2rem;
+            color: var(--bg-dark);
+            box-shadow: 0 5px 15px rgba(201,168,76,0.3);
+        }
+        .cert-issuer {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .cert-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--text-cream);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+        .cert-recipient {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+        .cert-bullets {
+            text-align: left;
+            margin-bottom: 30px;
+            display: inline-block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .cert-bullets li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cert-bullets li::before {
+            content: '•';
+            color: var(--gold-primary);
+        }
+        .cert-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+        .cert-sign {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--gold-light);
+        }
+
+        /* ================= 10. CONTACT SECTION ================= */
+        #contact {
+            background-color: var(--bg-dark);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .contact-info h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+        .info-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .info-text h5 {
+            font-size: 1rem;
+            color: var(--text-cream);
+            margin-bottom: 5px;
+        }
+        .info-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .contact-form {
+            background-color: var(--bg-card);
+            padding: 50px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-cream);
+            padding: 15px 20px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+        }
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23C9A84C%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px top 50%;
+            background-size: 12px auto;
+        }
+        select.form-control option {
+            background-color: var(--bg-card);
+            color: var(--text-cream);
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            width: 100%;
+            border: none;
+            cursor: none;
+        }
+        .submit-btn.success {
+            background-color: #2e7d32;
+            border-color: #2e7d32;
+            color: white;
+        }
+
+        /* ================= 11. FOOTER ================= */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--gold-primary);
+            padding: 60px 5% 30px 5%;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-logo p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+        .footer-nav {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-nav a {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .footer-nav a:hover {
+            color: var(--gold-primary);
+        }
+        .copyright {
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ================= ANIMATIONS ================= */
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+        @keyframes bobbing {
+            0% { transform: translateY(0) rotate(-2deg); }
+            100% { transform: translateY(-15px) rotate(2deg); }
+        }
+        @keyframes levitate {
+            0% { transform: rotateY(-18deg) rotateX(5deg) translateY(0); }
+            100% { transform: rotateY(-18deg) rotateX(5deg) translateY(-20px); }
+        }
+        @keyframes levitateCard {
+            0% { transform: translateY(0); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+            100% { transform: translateY(-15px); box-shadow: 0 35px 60px rgba(0,0,0,0.4); }
+        }
+        @keyframes fadeLine {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.8; }
+        }
+        @keyframes scrollWheel {
+            0% { top: 5px; opacity: 1; }
+            100% { top: 20px; opacity: 0; }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        @keyframes rotateCube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        /* ================= MEDIA QUERIES ================= */
+        @media (max-width: 1024px) {
+            .hero-text h1 { font-size: 3.5rem; }
+            .hero-grid, .about-grid, .why-grid, .awards-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero-visuals { display: none; } /* Hide 3D collage on small screens for better UX */
+            .stats-grid, .services-grid, .projects-grid, .video-grid { grid-template-columns: 1fr 1fr; }
+            .project-card.wide { grid-column: span 1; }
+            #about .about-image-wrapper { max-width: 500px; margin: 0 auto; }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--bg-card);
+                padding: 20px;
+                display: none;
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .stats-grid, .services-grid, .video-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .photo-stack { display: none; }
+            .hero-text h1 { font-size: 2.8rem; }
+        }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body>
 
-    <nav class="bg-[#faf9f6]/90 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-200 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-24 items-center">
-                <a href="#home" class="flex-shrink-0 flex flex-col justify-center">
-                    <span class="text-3xl font-playfair font-bold text-[#2d3748] tracking-wide">T&Z <span class="text-gold">Golden</span></span>
-                    <span class="text-[10px] text-gray-500 tracking-[0.2em] uppercase font-medium mt-1">Building Construction</span>
-                </a>
-                <div class="hidden md:flex space-x-10 font-medium tracking-widest items-center text-xs uppercase text-gray-600">
-                    <a href="#home" class="hover:text-gold transition">Home</a>
-                    <a href="#about" class="hover:text-gold transition">Our Legacy</a>
-                    <a href="#portfolio" class="hover:text-gold transition">Portfolio</a>
-                    <a href="#services" class="hover:text-gold transition">Services</a>
-                    <a href="#contact" class="bg-[#2d3748] text-white px-8 py-3 rounded-sm hover:bg-gold transition duration-300 shadow-md">Consult Now</a>
-                </div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <header id="header">
+        <a href="#" class="logo interactable">T<span>&</span>Z</a>
+        <nav class="nav-links" id="nav-links">
+            <a href="#about" class="interactable">About</a>
+            <a href="#services" class="interactable">Services</a>
+            <a href="#projects" class="interactable">Projects</a>
+            <a href="#media" class="interactable">Media</a>
+            <a href="#awards" class="interactable">Awards</a>
+            <a href="#contact" class="btn btn-gold interactable">Get a Quote</a>
+        </nav>
+        <div class="hamburger interactable" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="vertical-lines">
+            <div class="v-line delay-1"></div>
+            <div class="v-line delay-3"></div>
+            <div class="v-line delay-2"></div>
+            <div class="v-line delay-4"></div>
+            <div class="v-line delay-1"></div>
+        </div>
+        <div id="particles"></div>
+        
+        <div class="scene-3d">
+            <div class="wireframe-cube c1">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face right"></div><div class="face left"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+            <div class="wireframe-cube c2">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face right"></div><div class="face left"></div>
+                <div class="face top"></div><div class="face bottom"></div>
             </div>
         </div>
-    </nav>
 
-    <section id="home" class="relative pt-40 pb-24 md:pt-52 md:pb-32 px-4">
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <div class="inline-block border border-gold/30 bg-gold/5 px-6 py-2 rounded-full mb-8">
-                <span class="text-gold tracking-[0.3em] uppercase text-xs font-semibold">Premium UAE Real Estate</span>
+        <div class="hero-grid container">
+            <div class="hero-text fade-up delay-1">
+                <span class="section-label">T&Z Golden Building Construction</span>
+                <h1>Building Excellence <br><em class="italic-gold">Across Dubai</em></h1>
+                <p>Delivering high-quality construction, modern finishing, and reliable project execution. Adding unyielding value to your property through international standards and premium craftsmanship.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-gold interactable">Start Your Project</a>
+                    <a href="#projects" class="btn btn-ghost interactable">View Our Work</a>
+                </div>
             </div>
-            <h1 class="text-6xl md:text-8xl font-playfair font-bold text-[#2d3748] leading-[1.1] mb-8">
-                Masterpiece <br> <span class="italic font-light text-gray-500">Construction.</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-500 mb-12 font-light max-w-3xl mx-auto leading-relaxed">
-                Bringing Moscow's rigorous engineering standards to the UAE. We add undeniable value to your property from foundation to finish.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="#portfolio" class="bg-gold text-white px-10 py-4 text-sm uppercase tracking-widest font-bold hover:bg-[#2d3748] transition duration-300 rounded-sm soft-shadow">View Our Work</a>
-                <a href="#contact" class="border border-gray-300 text-[#2d3748] bg-white px-10 py-4 text-sm uppercase tracking-widest font-bold hover:border-gold hover:text-gold transition duration-300 rounded-sm">Contact Us</a>
+            <div class="hero-visuals fade-up delay-3">
+                <div class="collage-container" id="parallax-collage">
+                    <div class="collage-item">
+                        <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                    </div>
+                    <div class="collage-item">
+                        <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                    </div>
+                    <div class="collage-item">
+                        <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1541881451970-13e6d1163462?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                    </div>
+                    <div class="collage-item brand-card">
+                        <h3>T&Z</h3>
+                        <p>Golden LLC</p>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="absolute top-20 left-10 w-64 h-64 bg-gold rounded-full mix-blend-multiply filter blur-[100px] opacity-10 animate-float pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-80 h-80 bg-gray-400 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-float-delayed pointer-events-none"></div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            Scroll
+        </div>
     </section>
 
-    <section id="portfolio" class="py-24 bg-white border-y border-gray-100 relative">
-        <div class="max-w-6xl mx-auto px-4">
-            
-            <div class="text-center mb-16">
-                <h2 class="text-sm text-gold tracking-widest uppercase mb-3 font-bold">Visual Excellence</h2>
-                <h3 class="text-4xl md:text-5xl font-playfair font-bold text-[#2d3748]">Our Execution</h3>
+    <section id="stats" class="fade-up">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-num"><span class="counter" data-target="10">0</span>+</div>
+                <div class="stat-label">Years Experience</div>
             </div>
-
-            <div class="w-full aspect-video bg-[#1a1a1a] rounded-xl overflow-hidden soft-shadow mb-16 relative group border border-gray-100">
-                <video controls class="w-full h-full object-cover" poster="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80">
-                    <source src="assets/master-edit.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div class="stat-item">
+                <div class="stat-num"><span class="counter" data-target="50">0</span>+</div>
+                <div class="stat-label">State Projects</div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-0">
-                
-                <div class="h-80 md:h-96 rounded-xl overflow-hidden soft-shadow animate-float border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Construction detail" class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-                
-                <div class="h-80 md:h-96 rounded-xl overflow-hidden soft-shadow animate-float-delayed mt-0 md:mt-12 border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1541881451970-13e6d1163462?auto=format&fit=crop&w=800&q=80" alt="Architecture detail" class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-                
-                <div class="h-80 md:h-96 rounded-xl overflow-hidden soft-shadow animate-float border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="Interior detail" class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
+            <div class="stat-item">
+                <div class="stat-num"><span class="counter" data-target="3">0</span></div>
+                <div class="stat-label">Global Markets</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num"><span class="counter" data-target="100">0</span>%</div>
+                <div class="stat-label">Satisfaction</div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 bg-[#faf9f6]">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
-            <div class="relative h-[600px] rounded-xl overflow-hidden soft-shadow border border-gray-200">
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80" alt="Engineering" class="w-full h-full object-cover">
-                <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm p-6 rounded-lg shadow-xl border-l-4 border-gold max-w-sm">
-                    <i class="fa-solid fa-award text-3xl text-gold mb-3"></i>
-                    <h4 class="font-playfair font-bold text-[#2d3748] text-xl mb-2">Government Award</h4>
-                    <p class="text-sm text-gray-600">Recognized by the City of Moscow (2021) for outstanding execution in public construction.</p>
+    <section id="about">
+        <div class="about-grid container">
+            <div class="about-image-wrapper fade-up delay-1">
+                <div class="about-image-placeholder">
+                    <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80') center/cover;"></div>
+                </div>
+                <div class="badge-card">
+                    <h4>2016</h4>
+                    <p>Established</p>
                 </div>
             </div>
-            
-            <div>
-                <h2 class="text-sm text-gold tracking-widest uppercase mb-4 font-bold">Our Heritage</h2>
-                <h3 class="text-4xl md:text-5xl font-playfair font-bold text-[#2d3748] mb-8 leading-tight">Single Point of <br>Accountability.</h3>
-                <p class="text-lg text-gray-600 mb-6 leading-relaxed font-light">
-                    In the luxury real estate market, fragmented subcontractors lead to compromised results. Since 2016, T&Z Golden has operated differently. We act as your singular responsible team.
-                </p>
-                <p class="text-lg text-gray-600 mb-10 leading-relaxed font-light">
-                    We bring rigorous international standards to Dubai, ensuring high-touch execution, perfect finish consistency, and absolute oversight from the foundation to the final polish.
-                </p>
-                <div class="grid grid-cols-2 gap-8 border-t border-gray-200 pt-8">
-                    <div>
-                        <span class="text-4xl font-playfair font-bold text-[#2d3748]">10+</span>
-                        <p class="text-xs uppercase tracking-widest text-gray-500 mt-2 font-medium">Years Experience</p>
+            <div class="about-text fade-up delay-2">
+                <span class="section-label">Our Legacy</span>
+                <h2>Bringing Strong <em class="italic-gold">International Experience</em> to Dubai</h2>
+                <p>T&Z Golden Building Construction LLC was established in Dubai to deliver high-quality construction, modern finishing, and reliable project execution to the UAE market. Since 2016, the company has successfully delivered over 50 government and large-scale construction projects in Moscow.</p>
+                <div class="kpi-grid">
+                    <div class="kpi-box">
+                        <h5>Premium Quality</h5>
+                        <p>Uncompromising standards from foundation to final polish.</p>
                     </div>
-                    <div>
-                        <span class="text-4xl font-playfair font-bold text-[#2d3748]">50+</span>
-                        <p class="text-xs uppercase tracking-widest text-gray-500 mt-2 font-medium">State Projects</p>
+                    <div class="kpi-box">
+                        <h5>Reliable Execution</h5>
+                        <p>Strict adherence to timelines and structural integrity.</p>
+                    </div>
+                    <div class="kpi-box">
+                        <h5>Modern Finishing</h5>
+                        <p>Latest techniques for flawless interior aesthetics.</p>
+                    </div>
+                    <div class="kpi-box">
+                        <h5>Global Expertise</h5>
+                        <p>Proven track record in Moscow, Baku, and the UAE.</p>
                     </div>
                 </div>
+                <a href="#services" class="btn btn-ghost interactable">Explore Expertise</a>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-32 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-20 max-w-3xl mx-auto">
-                <h2 class="text-sm text-gold tracking-widest uppercase mb-3 font-bold">End-To-End Solutions</h2>
-                <h3 class="text-4xl md:text-5xl font-playfair font-bold text-[#2d3748] mb-6">Master Craftsmanship</h3>
-                <p class="text-gray-500 text-lg font-light">Custom-fit solutions engineered for the high-end UAE market.</p>
+    <section id="services">
+        <div class="container">
+            <div class="services-header fade-up">
+                <span class="section-label">Our Expertise</span>
+                <h2>Comprehensive <em class="italic-gold">End-to-End</em> Solutions</h2>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-[#faf9f6] p-10 rounded-xl soft-shadow hover:-translate-y-2 transition duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-house text-3xl text-gold mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-playfair font-bold text-[#2d3748] mb-3">Villa Construction</h4>
-                    <p class="text-gray-500 font-light leading-relaxed">End-to-end premium quality structure execution with strict on-time delivery.</p>
+            <div class="services-grid">
+                <div class="service-card fade-up delay-1 interactable">
+                    <span class="service-num">01</span>
+                    <div class="service-icon"><i class="fa-solid fa-house"></i></div>
+                    <h3>Villa Construction</h3>
+                    <p>End-to-end construction with premium quality and strict on-time delivery for luxury residential properties.</p>
                 </div>
-                <div class="bg-[#faf9f6] p-10 rounded-xl soft-shadow hover:-translate-y-2 transition duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-paint-roller text-3xl text-gold mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-playfair font-bold text-[#2d3748] mb-3">Renovation & Fit-Out</h4>
-                    <p class="text-gray-500 font-light leading-relaxed">Complete interior and exterior transformations featuring immaculate finishing.</p>
+                <div class="service-card fade-up delay-2 interactable">
+                    <span class="service-num">02</span>
+                    <div class="service-icon"><i class="fa-solid fa-paint-roller"></i></div>
+                    <h3>Renovation & Fit-Out</h3>
+                    <p>Complete interior and exterior renovation featuring high-quality finishing and modern upgrades.</p>
                 </div>
-                <div class="bg-[#faf9f6] p-10 rounded-xl soft-shadow hover:-translate-y-2 transition duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-fan text-3xl text-gold mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-playfair font-bold text-[#2d3748] mb-3">HVAC & Technical</h4>
-                    <p class="text-gray-500 font-light leading-relaxed">Advanced design and installation of high-efficiency climate systems.</p>
+                <div class="service-card fade-up delay-3 interactable">
+                    <span class="service-num">03</span>
+                    <div class="service-icon"><i class="fa-solid fa-fan"></i></div>
+                    <h3>HVAC & Technical</h3>
+                    <p>Advanced design and installation of efficient ventilation, air conditioning, and climate systems.</p>
                 </div>
-                <div class="bg-[#faf9f6] p-10 rounded-xl soft-shadow hover:-translate-y-2 transition duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-couch text-3xl text-gold mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-playfair font-bold text-[#2d3748] mb-3">Furniture & Joinery</h4>
-                    <p class="text-gray-500 font-light leading-relaxed">Bespoke fitted interior elements crafted to match your aesthetic vision.</p>
+                <div class="service-card fade-up delay-1 interactable">
+                    <span class="service-num">04</span>
+                    <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
+                    <h3>Furniture & Joinery</h3>
+                    <p>Custom furniture, precise woodwork, and fitted interior elements tailored perfectly to each project.</p>
                 </div>
-                <div class="bg-[#faf9f6] p-10 rounded-xl soft-shadow hover:-translate-y-2 transition duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-microchip text-3xl text-gold mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-playfair font-bold text-[#2d3748] mb-3">Smart Home Systems</h4>
-                    <p class="text-gray-500 font-light leading-relaxed">Seamless integration of modern lighting, security, and automation technology.</p>
+                <div class="service-card fade-up delay-2 interactable">
+                    <span class="service-num">05</span>
+                    <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Smart Home Systems</h3>
+                    <p>Integration of intelligent technologies for seamless lighting, climate, security, and automation control.</p>
                 </div>
-                <div class="bg-[#faf9f6] p-10 rounded-xl soft-shadow hover:-translate-y-2 transition duration-300 border border-gray-100 group">
-                    <i class="fa-solid fa-temperature-arrow-up text-3xl text-gold mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-playfair font-bold text-[#2d3748] mb-3">Underfloor Heating</h4>
-                    <p class="text-gray-500 font-light leading-relaxed">Invisible, modern heating solutions providing unparalleled comfort.</p>
+                <div class="service-card fade-up delay-3 interactable">
+                    <span class="service-num">06</span>
+                    <div class="service-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <h3>Underfloor Heating</h3>
+                    <p>Modern, invisible underfloor heating systems designed for enhanced residential comfort and energy efficiency.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-[#2d3748] pt-24 pb-12">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center border-b border-gray-600 pb-16">
-            <div>
-                <h2 class="text-4xl md:text-6xl font-playfair font-bold text-white mb-6">Let's build <br><span class="text-gold">your vision.</span></h2>
-                <p class="text-gray-400 mb-10 text-lg font-light leading-relaxed max-w-md">
-                    We are available for private discussions, site visits, and tailored commercial proposals across the UAE.
-                </p>
-                <div class="space-y-4">
-                    <p class="flex items-center text-lg text-gray-300"><i class="fa-solid fa-envelope text-gold mr-4 w-6 text-xl"></i> info@tzconstruction.com</p>
-                    <p class="flex items-center text-lg text-gray-300"><i class="fa-solid fa-phone text-gold mr-4 w-6 text-xl"></i> +971 58 5350242</p>
-                    <p class="flex items-center text-lg text-gray-300"><i class="fa-solid fa-location-dot text-gold mr-4 w-6 text-xl"></i> Dubai, United Arab Emirates</p>
+    <section id="why">
+        <div class="why-grid container">
+            <div class="fade-up delay-1">
+                <span class="section-label">Why Choose Us</span>
+                <h2>The T&Z <em class="italic-gold">Advantage</em></h2>
+                <div class="why-list">
+                    <div class="why-item interactable">
+                        <div class="why-dot"></div>
+                        <div class="why-text">
+                            <h4>Single Point of Accountability</h4>
+                            <p>Clients deal with one responsible, unified team from start to finish, not a fragmented web of subcontractors.</p>
+                        </div>
+                    </div>
+                    <div class="why-item interactable">
+                        <div class="why-dot"></div>
+                        <div class="why-text">
+                            <h4>High-Touch Execution</h4>
+                            <p>Meticulous oversight of site quality, material selection, architectural detailing, and unparalleled finish consistency.</p>
+                        </div>
+                    </div>
+                    <div class="why-item interactable">
+                        <div class="why-dot"></div>
+                        <div class="why-text">
+                            <h4>Custom-Fit Solutions</h4>
+                            <p>Scope perfectly tailored for full villa construction, targeted upgrades, complex fit-outs, or technical HVAC installations.</p>
+                        </div>
+                    </div>
+                    <div class="why-item interactable">
+                        <div class="why-dot"></div>
+                        <div class="why-text">
+                            <h4>Relationship-First Service</h4>
+                            <p>Our approach is designed for building a long-term reputation in Dubai, prioritizing client satisfaction over short-term turnover.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-stack fade-up delay-3">
+                <div class="stack-img top">
+                    <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80') center/cover;"></div>
+                </div>
+                <div class="stack-img">
+                    <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                </div>
+                <div class="stack-img">
+                    <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="services-header fade-up">
+                <span class="section-label">Project Highlights</span>
+                <h2>Our Global <em class="italic-gold">Portfolio</em></h2>
+            </div>
+            
+            <div class="filter-tabs fade-up delay-1">
+                <button class="filter-btn active interactable" data-filter="all">All</button>
+                <button class="filter-btn interactable" data-filter="residential">Residential</button>
+                <button class="filter-btn interactable" data-filter="public">Public</button>
+            </div>
+
+            <div class="masonry-grid">
+                <div class="project-card wide fade-up delay-1 interactable" data-category="residential">
+                    <div class="project-img">
+                        <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80') center/cover;"></div>
+                    </div>
+                    <div class="project-overlay">
+                        <h4>Residential Buildings</h4>
+                        <p>Moscow, Russia</p>
+                    </div>
+                </div>
+                <div class="project-card fade-up delay-2 interactable" data-category="residential">
+                    <div class="project-img">
+                        <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                    </div>
+                    <div class="project-overlay">
+                        <h4>Residential Villas</h4>
+                        <p>Baku, Azerbaijan</p>
+                    </div>
+                </div>
+                <div class="project-card fade-up delay-3 interactable" data-category="public">
+                    <div class="project-img">
+                        <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                    </div>
+                    <div class="project-overlay">
+                        <h4>University Restoration</h4>
+                        <p>Moscow, Russia</p>
+                    </div>
+                </div>
+                <div class="project-card wide fade-up delay-1 interactable" data-category="public">
+                    <div class="project-img">
+                        <div style="width:100%; height:100%; background:url('https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1000&q=80') center/cover;"></div>
+                    </div>
+                    <div class="project-overlay">
+                        <h4>Zoo Infrastructure</h4>
+                        <p>Moscow, Russia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="media">
+        <div class="container">
+            <div class="services-header fade-up">
+                <span class="section-label">Media & Process</span>
+                <h2>Watch Us <em class="italic-gold">Work</em></h2>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-card fade-up delay-1 interactable" onclick="playVideo(this)">
+                    <div class="video-wrapper">
+                        <video class="actual-video" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                        <div style="position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80') center/cover; opacity:0.6; z-index:1; pointer-events:none;"></div>
+                    </div>
+                    <div class="video-label">Foundation & Structure</div>
+                </div>
+
+                <div class="video-card fade-up delay-2 interactable" onclick="playVideo(this)">
+                    <div class="video-wrapper">
+                        <video class="actual-video" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                        <div style="position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80') center/cover; opacity:0.6; z-index:1; pointer-events:none;"></div>
+                    </div>
+                    <div class="video-label">Automated Plastering</div>
+                </div>
+
+                <div class="video-card fade-up delay-3 interactable" onclick="playVideo(this)">
+                    <div class="video-wrapper">
+                        <video class="actual-video" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                        <div style="position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=80') center/cover; opacity:0.6; z-index:1; pointer-events:none;"></div>
+                    </div>
+                    <div class="video-label">Luxury Fit-Out</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="scene-3d" style="perspective: 1000px; opacity: 0.3;">
+            <div class="wireframe-cube" style="top: 50%; left: 50%; width: 300px; height: 300px; transform: translate(-50%, -50%); animation-duration: 30s;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face right"></div><div class="face left"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+
+        <div class="awards-grid container relative z-10">
+            <div class="award-text fade-up delay-1">
+                <span class="section-label">Official Recognition</span>
+                <h2>Certified by <em class="italic-gold">Government Institutions</em></h2>
+                <p>The company's meticulous work in Moscow has been officially recognized by the Government of Moscow, acknowledging our professionalism and significant contribution to major public construction projects.</p>
+                <p>We bring this same level of certified dedication, trust, and structural integrity to every premium villa project we undertake in Dubai.</p>
+            </div>
+            <div class="fade-up delay-3 flex justify-center">
+                <div class="certificate-card interactable">
+                    <div class="cert-medal"><i class="fa-solid fa-star"></i></div>
+                    <div class="cert-issuer">Government of Moscow<br>Department of Construction</div>
+                    <div class="cert-title">APPRECIATION</div>
+                    <div class="cert-recipient"><em class="italic-gold">Teymur Hasan Ogly Agaragimov</em></div>
+                    <ul class="cert-bullets">
+                        <li>High professionalism</li>
+                        <li>Conscientious work</li>
+                        <li>Significant personal contribution</li>
+                        <li>Construction of educational facilities</li>
+                    </ul>
+                    <div class="cert-footer">
+                        <div class="text-left">
+                            <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Moscow 2021</span>
+                        </div>
+                        <div class="cert-sign">R. R. Zagurtudinov</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-grid container">
+            <div class="contact-info fade-up delay-1">
+                <span class="section-label">Get in Touch</span>
+                <h2>Start Your <em class="italic-gold">Project</em></h2>
+                
+                <div class="info-box">
+                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="info-text">
+                        <h5>Email Us</h5>
+                        <p>info@tzconstruction.com</p>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="info-text">
+                        <h5>Call Us</h5>
+                        <p>+971 58 5350242</p>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="info-text">
+                        <h5>Headquarters</h5>
+                        <p>Dubai, United Arab Emirates</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="bg-white p-10 rounded-xl soft-shadow">
-                <h3 class="text-2xl font-playfair font-bold text-[#2d3748] mb-6">Request Consultation</h3>
-                <form class="space-y-5">
-                    <input type="text" placeholder="Full Name" class="w-full bg-[#faf9f6] text-[#2d3748] p-4 rounded-md border border-gray-200 focus:outline-none focus:border-gold font-light" required>
-                    <input type="email" placeholder="Email Address" class="w-full bg-[#faf9f6] text-[#2d3748] p-4 rounded-md border border-gray-200 focus:outline-none focus:border-gold font-light" required>
-                    <textarea placeholder="Tell us about your project..." rows="4" class="w-full bg-[#faf9f6] text-[#2d3748] p-4 rounded-md border border-gray-200 focus:outline-none focus:border-gold font-light resize-none" required></textarea>
-                    <button type="submit" class="w-full bg-gold text-white font-bold uppercase tracking-widest py-4 rounded-md hover:bg-[#2d3748] transition duration-300 shadow-md">Send Request</button>
+            <div class="contact-form fade-up delay-2">
+                <form id="quoteForm" onsubmit="submitForm(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" class="form-control interactable" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control interactable" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="email" class="form-control interactable" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control interactable" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control interactable" required>
+                            <option value="" disabled selected>Select Service Required</option>
+                            <option value="villa">Villa Construction</option>
+                            <option value="renovation">Renovation & Fit-Out</option>
+                            <option value="hvac">HVAC & Technical Works</option>
+                            <option value="furniture">Furniture & Joinery</option>
+                            <option value="smart">Smart Home Systems</option>
+                            <option value="heating">Underfloor Heating Systems</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control interactable" placeholder="Project Details & Requirements" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold submit-btn interactable" id="submitBtn">Send Message</button>
                 </form>
             </div>
         </div>
-        
-        <div class="max-w-7xl mx-auto px-4 pt-8 text-center text-gray-500 text-xs font-medium tracking-widest uppercase">
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#" class="logo interactable">T<span>&</span>Z</a>
+                <p>Adding Value to Your Property.</p>
+            </div>
+            <div class="footer-nav">
+                <a href="#about" class="interactable">About</a>
+                <a href="#services" class="interactable">Services</a>
+                <a href="#projects" class="interactable">Projects</a>
+                <a href="#media" class="interactable">Media</a>
+                <a href="#awards" class="interactable">Awards</a>
+            </div>
+        </div>
+        <div class="copyright">
             &copy; 2026 T&Z Golden Building Construction LLC. All Rights Reserved.
         </div>
     </footer>
 
+    <script>
+        // Custom Cursor Logic
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        const interactables = document.querySelectorAll('.interactable, a, button, input, textarea, select');
+
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            dot.style.left = `${mouseX}px`;
+            dot.style.top = `${mouseY}px`;
+        });
+
+        // Smooth follow for the ring
+        function animateCursor() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            ring.style.left = `${ringX}px`;
+            ring.style.top = `${ringY}px`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover effects for cursor
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Sticky Header & Parallax 3D Effect
+        const header = document.getElementById('header');
+        const collage = document.getElementById('parallax-collage');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if(!collage) return;
+            const x = (window.innerWidth / 2 - e.pageX) / 60;
+            const y = (window.innerHeight / 2 - e.pageY) / 60;
+            collage.style.transform = `rotateY(${-18 + x}deg) rotateX(${5 + y}deg)`;
+        });
+
+        // Particle System
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 20;
+
+        for(let i=0; i<particleCount; i++) {
+            let p = document.createElement('div');
+            p.classList.add('particle');
+            
+            // Random properties
+            let size = Math.random() * 2 + 1.5;
+            let left = Math.random() * 100;
+            let duration = Math.random() * 10 + 5;
+            let delay = Math.random() * 10;
+            
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            p.style.left = `${left}%`;
+            p.style.animationDuration = `${duration}s`;
+            p.style.animationDelay = `${delay}s`;
+            
+            particlesContainer.appendChild(p);
+        }
+
+        // Intersection Observer (Fade up & Counter)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        let statsAnimated = false;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counters if stats section
+                    if (entry.target.id === 'stats' && !statsAnimated) {
+                        statsAnimated = true;
+                        const counters = document.querySelectorAll('.counter');
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const duration = 2000; // 2 seconds
+                            const increment = target / (duration / 16); // 60fps
+                            let current = 0;
+                            
+                            const updateCounter = () => {
+                                current += increment;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current);
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCounter();
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Project Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filterValue = btn.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.classList.remove('hide');
+                        // Slight timeout to allow layout to settle before fading in
+                        setTimeout(() => card.style.opacity = '1', 50);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.classList.add('hide'), 300);
+                    }
+                });
+            });
+        });
+
+        // Video Play Logic
+        window.playVideo = function(card) {
+            const video = card.querySelector('.actual-video');
+            const playBtn = card.querySelector('.play-btn');
+            
+            video.style.display = 'block';
+            video.play();
+            playBtn.style.display = 'none';
+        };
+
+        // Form Submit Simulation
+        window.submitForm = function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "Message Sent! ✓";
+            btn.classList.add('success');
+            
+            setTimeout(() => {
+                document.getElementById('quoteForm').reset();
+                btn.innerText = "Send Message";
+                btn.classList.remove('success');
+            }, 3000);
+        };
+    </script>
 </body>
 </html>
